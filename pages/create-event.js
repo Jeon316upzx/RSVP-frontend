@@ -36,6 +36,8 @@ export default function CreateEvent() {
         let eventTimestamp = eventDateAndTime.getTime();
         let eventDataCID = cid;
 
+        console.log(eventDataCID,"EVENTCID")
+
         const txn = await rsvpContract.createNewEventI(
           eventTimestamp,
           deposit,
@@ -43,6 +45,8 @@ export default function CreateEvent() {
           eventDataCID,
           { gasLimit: 900000 }
         );
+
+        console.log(txn,"TXNNNNN")
         console.log("Minting...", txn.hash);
         console.log("Minted -- ", txn.hash);
         setLoading(true);
@@ -72,7 +76,8 @@ export default function CreateEvent() {
       link: eventLink,
       image: getRandomImage(),
     };
-
+    
+    console.log(body, "BODY")
     try {
       const response = await fetch("/api/store-event-data", {
         method: "POST",
@@ -84,6 +89,7 @@ export default function CreateEvent() {
       } else {
         console.log("Form successfully submitted!");
         let responseJSON = await response.json();
+        console.log(responseJSON)
         await createEvent(responseJSON.cid);
       }
       // check response, if success is false, dont take them to success page
