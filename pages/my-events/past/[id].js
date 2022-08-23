@@ -4,7 +4,7 @@ import DashboardNav from "../../../components/DashboardNav";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { gql } from "@apollo/client";
-import client from "../../../apollo-client";
+import client from "../../../utils/apollo-client";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 import connectContract from "../../../utils/connectContract";
